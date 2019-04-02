@@ -14,7 +14,7 @@ services:
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-      WAIT_HOSTS: mongodb:27017
+      - "WAIT_HOSTS: mongodb:27017"
     ports: 
       - '3000:3000'
     links: 
@@ -22,8 +22,8 @@ services:
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
-    # networks:
-    #   - app-network    
+    networks:
+      - app-network    
        
   mongodb:
     container_name: mongodb
@@ -38,9 +38,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
     networks:
       - app-network
-    networks:
-  app-network:
-    driver: bridge
+  networks:
+    app-network:
+      driver: bridge
 
   volumes:
     dbdata:
