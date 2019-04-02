@@ -20,7 +20,7 @@ connectTimeoutMS: 10000,
 
 //setting up web environment
 const PORT = process.env.PORT || 3000;
-module.exports.url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 mongoose.connect(url, options).then( function() {
     console.log('MongoDB is connected');
     app.listen(PORT, console.log('Connected to port: ', PORT));
