@@ -69,3 +69,6 @@ app.use(breadcrumbs.setHome());
 
 //top level routes
 accessController(app);
+
+//connect
+db.mongooseConnect(app);

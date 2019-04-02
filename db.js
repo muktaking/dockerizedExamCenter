@@ -1,5 +1,3 @@
-const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
 
 const {
@@ -21,7 +19,9 @@ connectTimeoutMS: 10000,
 //setting up web environment
 const PORT = process.env.PORT || 3000;
 const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
-mongoose.connect(url, options).then( function() {
+
+const mongooseConnect = (app)=>{
+  mongoose.connect(url, options).then( function() {
     console.log('MongoDB is connected');
     app.listen(PORT, console.log('Connected to port: ', PORT));
   })
@@ -29,11 +29,12 @@ mongoose.connect(url, options).then( function() {
     console.log(err);
   });
 
-const db = mongoose.connection;
-db.on('reconnectFailed', ()=> {
-    throw new Error('Connection lost with db');
-})
-
+  const db = mongoose.connection;
+  db.on('reconnectFailed', ()=> {
+      throw new Error('Connection lost with db');
+  })
+}
 module.exports ={
-  url
+  url,
+  mongooseConnect
 }
