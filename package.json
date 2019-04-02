@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app",
+    "start": "nodemon app",
     "start:dev": "nodemon app",
     "bundlefy": "browserify browserify/main.js -o public/js/bundle.js -t [ babelify --presets [ @babel/preset-env]]"
   },
