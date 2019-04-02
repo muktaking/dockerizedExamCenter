@@ -1,0 +1,11 @@
+node_modules
+.vscode
+.env
+nodemon.json
+questionExcelFormat.xlsx
+README.md
+assets/fileData/
+assets/images/
+logs/
+.git
+.gitignore
