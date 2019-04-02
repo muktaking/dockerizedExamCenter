@@ -8,12 +8,13 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     environment:
+      - NODE_ENV=$NODE_ENV
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-      WAIT_HOSTS: mongodb:27017
+      - WAIT_HOSTS: mongodb:27017
     ports: 
       - '3000:3000'
     links: 
