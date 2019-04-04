@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const {
-    MONGO_USERNAME,
-    MONGO_PASSWORD,
+    APP_MONGO_USER,
+    APP_MONGO_PASS,
     MONGO_HOSTNAME,
     MONGO_PORT,
     MONGO_DB
