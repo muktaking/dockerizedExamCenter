@@ -32,7 +32,7 @@ services:
     ports: 
       - '27017:27017'
     volumes:
-      - 'dbdata:/data/db'
+      - '/home/data/db:/data/db'
       - .:/docker-entrypoint-initdb.d/
     env_file: .env
     environment:
@@ -47,5 +47,5 @@ networks:
     driver: bridge
 
 volumes:
-  dbdata: /home/data/db
+  dbdata: 
   node_modules:         
