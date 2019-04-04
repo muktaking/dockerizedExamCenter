@@ -9,8 +9,8 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=$NODE_ENV
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - APP_MONGO_USER=${APP_MONGO_USER}
+      - APP_MONGO_PASS=${APP_MONGO_PASS}
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
@@ -33,10 +33,13 @@ services:
       - '27017:27017'
     volumes:
       - 'dbdata:/data/db'
+      - .:/docker-entrypoint-initdb.d/
     env_file: .env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+      - APP_MONGO_USER=${APP_MONGO_USER}
+      - APP_MONGO_PASS=${APP_MONGO_PASS}
     networks:
       - app-network
 networks:
@@ -44,5 +47,5 @@ networks:
     driver: bridge
 
 volumes:
-  dbdata:
+  dbdata: /home/data/db
   node_modules:         

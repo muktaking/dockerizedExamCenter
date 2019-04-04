@@ -18,7 +18,7 @@ connectTimeoutMS: 10000,
 
 //setting up web environment
 const PORT = process.env.PORT || 3000;
-const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+const url = `mongodb://${APP_MONGO_USER}:${APP_MONGO_PASS}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 
 const mongooseConnect = (app)=>{
   mongoose.connect(url, options).then( function() {
