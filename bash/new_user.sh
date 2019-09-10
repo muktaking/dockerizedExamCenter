@@ -3,7 +3,7 @@
 echo 'Creating application user and db'
 
 mongo app_db \
-        --host localhost \
+        --host ${MONGO_HOSTNAME} \
         --port ${MONGO_PORT} \
         -u ${MONGO_USERNAME} \
         -p ${MONGO_PASSWORD} \
