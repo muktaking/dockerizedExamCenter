@@ -19,6 +19,7 @@ const logger = require('./config/winston'); // winston configuration
 const accessController = require('./component/accessController/accessController');// top level routes 
 
 //database link
+
 const dbLink = db.url;// our mongodb database link
 
 //handling uncaught promise rejection

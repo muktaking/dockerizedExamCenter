@@ -33,7 +33,7 @@ services:
       - '27017:27017'
     volumes:
       - 'dbdata:/data/db'
-      - .:/docker-entrypoint-initdb.d/
+      - /bash/:/docker-entrypoint-initdb.d/
     env_file: .env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
