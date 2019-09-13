@@ -9,7 +9,7 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=$NODE_ENV
-      - APP_MONGO_USER=APP_$MONGO_USER
+      - APP_MONGO_USER=$APP_MONGO_USER
       - APP_MONGO_PASS=$APP_MONGO_PASS
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
