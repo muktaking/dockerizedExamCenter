@@ -9,8 +9,8 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=$NODE_ENV
-      - APP_MONGO_USER=$APP_MONGO_USER
-      - APP_MONGO_PASS=$APP_MONGO_PASS
+      - APP_MONGO_USER=$MONGO_USERNAME
+      - APP_MONGO_PASS=$MONGO_PASSWORD
       - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
@@ -22,6 +22,7 @@ services:
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
+      - server_logs:/home/node/app/logs
     networks:
       - app-network
     # command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js       
@@ -33,18 +34,18 @@ services:
       - '27017:27017'
     volumes:
       - 'dbdata:/data/db'
-      - "./bash/:/docker-entrypoint-initdb.d/"
+      #- "./bash/:/docker-entrypoint-initdb.d/"
     env_file: .env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
-      - APP_MONGO_USER=$APP_MONGO_USER
-      - APP_MONGO_PASS=$APP_MONGO_PASS
-      - MONGO_HOSTNAME=mongodb
-      - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
+      #- MONGO_USERNAME=$MONGO_USERNAME
+      #- MONGO_PASSWORD=$MONGO_PASSWORD
+      #- APP_MONGO_USER=$APP_MONGO_USER
+      #- APP_MONGO_PASS=$APP_MONGO_PASS
+      #- MONGO_HOSTNAME=mongodb
+      #- MONGO_PORT=$MONGO_PORT
+      #- MONGO_DB=$MONGO_DB
     networks:
       - app-network
 networks:
@@ -53,4 +54,5 @@ networks:
 
 volumes:
   dbdata: 
-  node_modules:         
+  node_modules:
+  server_logs:         
