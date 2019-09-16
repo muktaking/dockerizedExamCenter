@@ -7,7 +7,7 @@ module.exports.dBoardController = async(req,res,next)=>{
     
     const [profile] = await Exam.find({user: userId});
     if(!profile){
-        res.status(200).render('dashboard/dashboard',{
+        return res.status(200).render('dashboard/dashboard',{
             path: '/dashboard',
             userName, 
             totalAvgScore: 0, 
@@ -15,7 +15,7 @@ module.exports.dBoardController = async(req,res,next)=>{
             highestMark: 0, 
             lowestMark: 0
         });
-    }
+    } 
     const totalAvgScore = Number(_.sum(_.map(profile.exams, 'averageScore')).toFixed(2));
     const examTaken = profile.exams.length;
     const highestMark = _.sortBy(profile.exams, 'averageScore')[0].averageScore.toFixed(2);
