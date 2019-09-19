@@ -55,4 +55,4 @@ networks:
 volumes:
   dbdata: 
   node_modules:
-  server_logs:         
+  server_logs:
