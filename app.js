@@ -32,8 +32,8 @@ app.use(morgan('combined', { stream: logger.stream.write }));
 
 // Setting template engine, public folders
 app.set('view engine', 'pug');
-app.use(express.static('public'));
-app.use('/assets/images',express.static('assets/images'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets/images', express.static(path.join(__dirname, 'assets/images')));
 //helmet
 app.use(helmet());
 app.use(compression());
