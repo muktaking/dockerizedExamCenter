@@ -87,5 +87,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ./public/
+      device: /home/muktaking/node_project/dockerizedExamCenter/public/
       o: bind         
