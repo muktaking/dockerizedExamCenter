@@ -55,24 +55,24 @@ services:
       ports:
         - "80:80"
       volumes:
-        - web-root:/var/www/html
+        #- web-root:/var/www/html
         - ./nginx-conf:/etc/nginx/conf.d
-        - certbot-etc:/etc/letsencrypt
-        - certbot-var:/var/lib/letsencrypt
+        #- certbot-etc:/etc/letsencrypt
+        #- certbot-var:/var/lib/letsencrypt
       depends_on:
         - node_app
       networks:
         - app-network
-  certbot:
-      image: certbot/certbot
-      container_name: certbot
-      volumes:
-        - certbot-etc:/etc/letsencrypt
-        - certbot-var:/var/lib/letsencrypt
-        - web-root:/var/www/html
-      depends_on:
-        - webserver
-      command: certonly --webroot --webroot-path=/var/www/html --email yeakubinfire@gmail.com --agree-tos --no-eff-email --staging -d onlinepgdexam.com  -d www.onlinepgdexam.com               
+  # certbot:
+  #     image: certbot/certbot
+  #     container_name: certbot
+  #     volumes:
+  #       - certbot-etc:/etc/letsencrypt
+  #       - certbot-var:/var/lib/letsencrypt
+  #       - web-root:/var/www/html
+  #     depends_on:
+  #       - webserver
+  #     command: certonly --webroot --webroot-path=/var/www/html --email yeakubinfire@gmail.com --agree-tos --no-eff-email --staging -d onlinepgdexam.com  -d www.onlinepgdexam.com               
 networks:
   app-network:
     driver: bridge
@@ -81,11 +81,11 @@ volumes:
   dbdata: 
   node_modules:
   server_logs:
-  certbot-etc:
-  certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/muktaking/node_project/dockerizedExamCenter/public/
-      o: bind         
+  # certbot-etc:
+  # certbot-var:
+  # web-root:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     device: /home/muktaking/node_project/dockerizedExamCenter/public/
+  #     o: bind         
